@@ -33,14 +33,12 @@ const loadErrorLogModule = (async function () {
 
 async function start( [ evtWindow, ErrorLog ] ) {
   try {
-    (async function () {
-      const rtc1 = new RTCPeerConnection();
-      const offer = await rtc1.createOffer();
-      console.log(offer);
-      const result = document.createElement("p");
-      result.appendChild(document.createTextNode(offer.toString()));
-      document.body.appendChild(result);
-    })();
+    const rtc1 = new RTCPeerConnection();
+    const offer = await rtc1.createOffer();
+    console.log(offer);
+    const result = document.createElement("p");
+    result.appendChild(document.createTextNode(offer.sdp));
+    document.body.appendChild(result);
   } catch (e) {
     ErrorLog.rethrow({
       functionName: "start",
