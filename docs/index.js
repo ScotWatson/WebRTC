@@ -36,8 +36,9 @@ async function start( [ evtWindow, ErrorLog ] ) {
     (async function () {
       const rtc1 = new RTCPeerConnection();
       const offer = await rtc1.createOffer();
+      console.log(offer);
       const result = document.createElement("p");
-      result.appendChild(document.createTextNode(offer));
+      result.appendChild(document.createTextNode(offer.toString()));
       document.body.appendChild(result);
     })();
   } catch (e) {
